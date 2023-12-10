@@ -25,7 +25,7 @@ def guess_the_number():
 def get_valid_number_from_player():
     while True:
         try:
-            player_guess = input("Your guess: ")
+            player_guess = int(input("Your guess: "))
             return player_guess
         except ValueError:
             print("Your input is not a valid integer. Please, try again.")
