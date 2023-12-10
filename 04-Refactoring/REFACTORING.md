@@ -355,8 +355,8 @@ file name, take note of how the name also updates in both the next line of code
 and the project pane.
 
 
-![](img.webp)
-![](img.webp)
+![](refactoring-small.webp)
+![](refactoring-small.webp)
 
 Once you have made the necessary changes to the file name in the editor, proceed with the following steps:
 
@@ -380,7 +380,7 @@ the code editor also automatically update to reflect the change.
 
 Here is the same image file once again:
 
-![img](img.webp)
+![img](refactoring-small.webp)
 
 Can you create an 'images' directory and move the image file to this new
 directory? In the move dialog, be sure to select the option 'Search for 
