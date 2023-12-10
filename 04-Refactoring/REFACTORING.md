@@ -276,9 +276,8 @@ badly formatted in source code. Can you fix them?
 | Name | Age | Occupation | Favorite Color |
 |------|-----|------------|----------------|
 | John | 32  | Programmer | DodgerBlue     |
-| Sue  | 54  | Accountant | Green          
-| Jim  | 41  | Teacher    | Red            
-
+| Sue  | 54  | Accountant | Green          |
+| Jim  | 41  | Teacher    | Red            |
 
 2. Please automatically fix the formatting issues in the code below using the 
 menu option 'Code > Re-Format Code' (a.k.a., 'Lint') or the keyboard shortcut: 
@@ -286,21 +285,31 @@ menu option 'Code > Re-Format Code' (a.k.a., 'Lint') or the keyboard shortcut:
 
 ```python
 # Overall, bad vertical spacing
-def my_func(my_par = 12) : # Spaces around default parameter equal sign
-    x=5           # No spaces around variable assignment equal sign
-def my_other_func ( ) : # Spaces around and within parenthesis
- x=5           # Indentation error
-my_func ()       # Space before parenthesis
+def my_func(my_par=12):  # Spaces around default parameter equal sign
+    x = 5  # No spaces around variable assignment equal sign
+
+
+def my_other_func():  # Spaces around and within parenthesis
+    x = 5  # Indentation error
+
+
+my_func()  # Space before parenthesis
 for i in range(10):
-  print(i)   # Inconsistent indentation (should be 4 spaces)
-a = 1+1  # No spaces around operator
-l = [1,2,3] # No spaces after commas
+    print(i)  # Inconsistent indentation (should be 4 spaces)
+a = 1 + 1  # No spaces around operator
+l = [1, 2, 3]  # No spaces after commas
 ```
 
 3. Please automatically wrap the below text using the same method as in above item.
 
 ```md 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cras pulvinar mattis nunc sed blandit. Nunc vel risus commodo viverra maecenas. Eget magna fermentum iaculis eu. Vehicula ipsum a arcu cursus vitae congue mauris rhoncus. Nunc eget lorem dolor sed viverra ipsum. Porttitor rhoncus dolor purus non enim praesent. Amet venenatis urna cursus eget nunc scelerisque viverra mauris in. In iaculis nunc sed augue lacus. Suspendisse faucibus interdum posuere lorem. Sit amet facilisis magna etiam tempor orci eu. Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci. Magna sit amet purus gravida quis blandit. Risus pretium quam vulputate dignissim suspendisse in est.§
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+aliqua. Cras pulvinar mattis nunc sed blandit. Nunc vel risus commodo viverra maecenas. Eget magna fermentum iaculis eu.
+Vehicula ipsum a arcu cursus vitae congue mauris rhoncus. Nunc eget lorem dolor sed viverra ipsum. Porttitor rhoncus
+dolor purus non enim praesent. Amet venenatis urna cursus eget nunc scelerisque viverra mauris in. In iaculis nunc sed
+augue lacus. Suspendisse faucibus interdum posuere lorem. Sit amet facilisis magna etiam tempor orci eu. Quis ipsum
+suspendisse ultrices gravida dictum fusce ut placerat orci. Magna sit amet purus gravida quis blandit. Risus pretium
+quam vulputate dignissim suspendisse in est.§
 ``` 
 
 </div>  
