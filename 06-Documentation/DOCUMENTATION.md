@@ -24,7 +24,10 @@ import enum
 
 
 class Direction(enum.Enum):
-  
+    """
+    Enumeration representing cardinal directions: NORTH, EAST, SOUTH, and WEST.
+    """
+      
     NORTH = 0
     EAST = 1
     SOUTH = 2
@@ -32,19 +35,68 @@ class Direction(enum.Enum):
 
 
 class Turtle:
-  
+    """
+    A class representing a turtle with x and y coordinates and a facing direction.
+
+    Methods:
+        __init__(self, x: int, y: int) -> None:
+            Initializes the Turtle with the given x and y coordinates.
+        
+        turn_right(self) -> None:
+            Turns the turtle 90 degrees to the right.
+
+        turn_left(self) -> None:
+            Turns the turtle 90 degrees to the left.
+
+        move_forward(self) -> None:
+            Moves the turtle one unit forward in its current direction.
+
+        __str__(self) -> str:
+            Returns a string representation of the turtle's current state.
+
+    Attributes:
+        x (int): The x-coordinate of the turtle.
+        y (int): The y-coordinate of the turtle.
+        direction (Direction): The current direction the turtle is facing.
+
+    Examples:
+        # Initialize a turtle at (0, 0) facing North
+        turtle = Turtle(0, 0)
+
+        # Move the turtle forward
+        turtle.move_forward()
+        assert str(turtle) == "Turtle at (0, 1) facing North"
+
+        # Turn the turtle right and move forward
+        turtle.turn_right()
+        turtle.move_forward()
+        assert str(turtle) == "Turtle at (1, 1) facing East"
+
+        # Turn the turtle right and move forward
+        turtle.turn_right()
+        turtle.move_forward()
+        assert str(turtle) == "Turtle at (1, 0) facing South"
+
+        # Turn the turtle right and move forward
+        turtle.turn_right()
+        turtle.move_forward()
+        assert str(turtle) == "Turtle at (0, 0) facing West"
+    """
     def __init__(self, x, y):
         self.x = x
         self.y = y
         self.direction = Direction.NORTH
 
     def turn_right(self):
+        """Turns the turtle 90 degrees to the right."""
         self.direction = Direction((self.direction.value + 1) % 4)
 
     def turn_left(self):
+        """Turns the turtle 90 degrees to the left."""
         self.direction = Direction((self.direction.value - 1) % 4)
 
     def move_forward(self):
+        """Moves the turtle one unit forward in its current direction."""
         if self.direction == Direction.NORTH:
             self.y += 1
         elif self.direction == Direction.EAST:
@@ -55,6 +107,9 @@ class Turtle:
             self.x -= 1
 
     def __str__(self):
+        """
+        Returns a string representation of the turtle's current state.
+        """
         direction_names = {
             Direction.NORTH: 'North',
             Direction.EAST: 'East',
