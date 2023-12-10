@@ -355,8 +355,8 @@ file name, take note of how the name also updates in both the next line of code
 and the project pane.
 
 
-![](refactoring-small.webp)
-![](refactoring-small.webp)
+![](images/refactoring-small.webp)
+![](images/refactoring-small.webp)
 
 Once you have made the necessary changes to the file name in the editor, proceed with the following steps:
 
@@ -380,7 +380,7 @@ the code editor also automatically update to reflect the change.
 
 Here is the same image file once again:
 
-![img](refactoring-small.webp)
+![img](images/refactoring-small.webp)
 
 Can you create an 'images' directory and move the image file to this new
 directory? In the move dialog, be sure to select the option 'Search for 
@@ -390,6 +390,9 @@ After you moved the file:
 
 1. What do you see in the image file's path?
 2. What about the previous instances where this image file was used?
+
+Answers: the image file's path has now a prefix images/file.
+Every usage of the image in the editor adapts automatically to the new path. 
 
 </div>
 
