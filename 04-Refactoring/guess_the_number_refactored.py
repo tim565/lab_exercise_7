@@ -1,33 +1,22 @@
-# TODO 🏠: Add this file to Git
-# TODO 🏠: Make a first commit
-# TODO 🏠: Remove this and any previous TOODs in this file. Keep doing this after
-#  every change you successfully make: a completed to-do should not stay around.
-#  Once you have completed tis assigment, there should be no to-do messages left
-#  in this file.
-
-# TODO 🏠: Change the file name to `guess_number_refactored.py`
-
-# TODO 🏠: Make the import command more specific, so that only the methods
-#  used in this file are imported instead of the entire module
-import random
+from random import randint
 
 
 def guess_the_number():
-    number_to_guess = random.randint(0, 101)
+    number_to_guess = randint(0, 101)
     guesses_taken = 0
 
     print("Welcome player! Guess the number between 1 and 100.")
 
     while True:
-        player_guess = get_valid_number_from_player()
+        player_guess = _get_valid_number_from_player()
         guesses_taken += 1
-        # TODO 🏠: Use explanatory variable to make the conditional logic easier to read
-        if compare_numbers(player_guess, number_to_guess, guesses_taken):
+
+        compared_numbers = _compare_numbers(player_guess, number_to_guess, guesses_taken)
+        if compared_numbers:
             break
 
 
-# TODO 🏠: Turn into private function
-def get_valid_number_from_player():
+def _get_valid_number_from_player():
     while True:
         try:
             player_guess = int(input("Your guess: "))  # Will pause execution and await input from you in Python console
@@ -36,18 +25,19 @@ def get_valid_number_from_player():
             print("Your input is not a valid integer. Please, try again.")
 
 
-# TODO 🏠: Turn into private function
-# TODO 🏠: Add type hints to each parameter and also specify the type of the return value
-def compare_numbers(player_guess, number_to_guess, guesses_taken):
-    outcome = False
-    # TODO 🏠: Use explanatory variables to make the conditional logic easier to read
-    if player_guess < number_to_guess:
+def _compare_numbers(player_guess: int, number_to_guess: int, guesses_taken: int) -> bool:
+    outcome: bool = False
+    is_guess_too_low: bool = player_guess < number_to_guess
+    is_guess_too_high: bool = player_guess > number_to_guess
+
+    if is_guess_too_low:
         print("Too low!")
-    elif player_guess > number_to_guess:
+    elif is_guess_too_high:
         print("Too high!")
     else:
         print(f"Congratulations! You found the number in {guesses_taken} tries.")
         outcome = True
+
     return outcome
 
 

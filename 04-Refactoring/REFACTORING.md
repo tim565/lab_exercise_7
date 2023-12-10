@@ -72,27 +72,51 @@ To improve the code, please follow these steps using PyCharm's refactoring facil
 ```python
 import re  # Regex
 
+
 class UserProfileException(Exception):
     pass
 
-def check_user_profile(name, age, country, login_status):
-   
-    # Check if name is valid.
-    if len(name) < 3 or not re.match("^[A-Za-z]*$", name):  # Regex meaning only alphabetic characters
+
+def is_valid_name(name):
+    return len(name) >= 3 and re.match("^[A-Za-z]*$", name)
+
+
+def is_valid_age(age):
+    return str(age).isnumeric() and 18 <= int(age) <= 120
+
+
+def is_logged_in(login_status):
+    return login_status
+
+
+def check_name(name):
+    if not is_valid_name(name):
         raise UserProfileException(f"Invalid name: {name}. Name should be at least 3 characters long and should only contain alphabetic characters.")
 
-    # Check if age is within permissible range and is numeric.
-    if not str(age).isnumeric() or not 18 <= age <= 120:  # Just a quick way to force integer; isnumeric needs a string
+
+def check_age(age):
+    if not is_valid_age(age):
         raise UserProfileException(f"Invalid age: {age}. Age should be a numeric value between 18 and 120.")
 
-    # Check country validity.
+
+def check_country(country):
     countries = ["Germany", "Netherlands", "Austria", "Sweden"]
-    if country not in countries:
+    in_valid_countries = country in countries
+
+    if not in_valid_countries:
         raise UserProfileException(f"Invalid country: {country}. Our service is only available in {', '.join(countries)}.")
 
-    # Check login status.
-    if not login_status:
-        raise UserProfileException(f"User {name} is not logged in. Cannot process.")
+
+def check_login_status(login_status):
+    if not is_logged_in(login_status):
+        raise UserProfileException(f"User is not logged in. Cannot process.")
+
+
+def check_user_profile(name, age, country, login_status):
+    check_name(name)
+    check_age(age)
+    check_country(country)
+    check_login_status(login_status)
 
     # If all conditions are met, return a success message.
     return f"User {name}'s profile is valid."
@@ -110,7 +134,7 @@ except UserProfileException as e:
     print(e)
 
 try:
-    print(check_user_profile("", '52',"USA", True))
+    print(check_user_profile("", '52', "USA", True))
 except UserProfileException as e:
     print(e)
 
@@ -128,6 +152,7 @@ try:
     print(check_user_profile("Rob3rt", 22, "UK", True))
 except UserProfileException as e:
     print(e)
+
 ```
 
 </div>
@@ -151,6 +176,7 @@ Please use multiple cursors to turn the string below into a list of fruits:
 
 ```python
 fruits = "Apple, Banana, Cherry, Date, Elderberry, Fig, Guava"
+fruits_list = [cursor_selection.strip() for cursor_selection in fruits.split(',')]
 ```
 
 <h4>Exercise B</h4>
@@ -166,27 +192,62 @@ In the below code, use multiple cursors to...
 5. Remove spaces around the equal signs.
 
 ```python
-def create_star(type, size, color, temperature, life_expectancy, galaxy):
+def create_star(kind, 
+                size, 
+                color, 
+                temperature, 
+                life_expectancy, 
+                galaxy):
     pass
 
 
-# Creating a Red Dwarf Star in Milky Way
-create_star(type="Red Dwarf", size="Small", color="Red", temperature=3500, life_expectancy="Long", galaxy="Milky Way")
+# star in Milky Way
+create_star(kind="Red Dwarf", 
+            size="Small", 
+            color="Red", 
+            temperature=3500, 
+            life_expectancy="Long", 
+            galaxy="Milky Way")
 
-# Creating a Blue Giant Star in Andromeda
-create_star(type="Blue Giant", size="Large", color="Blue", temperature=25000, life_expectancy="Short", galaxy="Andromeda")
+# star in Andromeda
+create_star(kind="Blue Giant", 
+            size="Large", 
+            color="Blue", 
+            temperature=25000, 
+            life_expectancy="Short", 
+            galaxy="Andromeda")
 
-# Creating a Yellow Dwarf Star (like our Sun) in Milky Way
-create_star(type="Yellow Dwarf", size="Medium", color="Yellow", temperature=5500, life_expectancy="Medium", galaxy="Milky Way")
+# star (like our Sun) in Milky Way
+create_star(kind="Yellow Dwarf", 
+            size="Medium", 
+            color="Yellow", 
+            temperature=5500, 
+            life_expectancy="Medium", 
+            galaxy="Milky Way")
 
-# Creating a White Dwarf Star in Whirlpool Galaxy
-create_star(type="White Dwarf", size="Small", color="White", temperature=8000, life_expectancy="Very Long", galaxy="Whirlpool")
+# star in Whirlpool Galaxy
+create_star(kind="White Dwarf", 
+            size="Small", 
+            color="White", 
+            temperature=8000, 
+            life_expectancy="Very Long", 
+            galaxy="Whirlpool")
 
-# Creating a Neutron Star in Triangulum Galaxy
-create_star(type="Neutron Star", size="Very Small", color="Colorless", temperature=1000000, life_expectancy="Very Long", galaxy="Triangulum")
+# star in Triangulum Galaxy
+create_star(kind="Neutron Star", 
+            size="Very Small", 
+            color="Colorless", 
+            temperature=1000000, 
+            life_expectancy="Very Long", 
+            galaxy="Triangulum")
 
-# Creating a Hypergiant Star in Pinwheel Galaxy
-create_star(type="Hypergiant", size="Very Large", color="Red", temperature=4000, life_expectancy="Short", galaxy="Pinwheel")
+# star in Pinwheel Galaxy
+create_star(kind="Hypergiant", 
+            size="Very Large", 
+            color="Red", 
+            temperature=4000,
+            life_expectancy="Short",
+            galaxy="Pinwheel")
 ```
 
 </div>
